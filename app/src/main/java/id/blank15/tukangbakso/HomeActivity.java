@@ -14,6 +14,7 @@ public class HomeActivity extends AppCompatActivity {
     ArrayList<Drawable> img = new ArrayList<>();
     ArrayList<String> nama = new ArrayList<>();
     ArrayList<String> harga = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         nama.add("Jumbo");
 
         harga.add("Rp.12.000");
+
         harga.add("Rp.5.000");
         harga.add("Rp.20.000");
 
