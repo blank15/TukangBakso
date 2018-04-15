@@ -25,13 +25,17 @@ public class InsertActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // mendeklarasikan class menu
                 Menu menu=new Menu();
 
+                //mengatur value untuk harga dan nama menu bedasarkan inputan user
                 menu.setNamaMenu(editTextNama.getText().toString());
                 menu.setHarga(editTextHarga.getText().toString());
 
+                //proses input ke database
                 dbHelper.insertMenu(menu);
 
+                //pindah ke activity home
                 Intent intent=new Intent(InsertActivity.this, HomeActivity.class);
                 startActivity(intent);
             }

@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.rview);
         button=(Button)findViewById(R.id.btn_input);
 
+        //penginisialisasikan database
         dbHelper=DbHelper.getInstance(getApplicationContext());
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +39,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //recycler view untuk menampilkan data dari database
+        //constructor pada recycler view diganti denan context dan list menu. lihat pada recycler view adapter
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(HomeActivity.this, dbHelper.getMenu());
         recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
         recyclerView.setAdapter(adapter);
