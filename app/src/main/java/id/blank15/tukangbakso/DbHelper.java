@@ -31,6 +31,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        //membuat database
         String queryCreateTabelJadwal = "create table " +
                 TABLE_INPUT +
                 " (" +
@@ -44,6 +45,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int lama, int baru) {
+        //update database apakah sudah ada belum
         if (lama != baru){
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_INPUT);
             onCreate(sqLiteDatabase);
@@ -61,6 +63,7 @@ public class DbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    //insert menu
     public void insertMenu(Menu menu){
         SQLiteDatabase sqLiteDatabase=getWritableDatabase();
         sqLiteDatabase.beginTransaction();
@@ -72,6 +75,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             sqLiteDatabase.insertOrThrow(TABLE_INPUT, null, values);
             sqLiteDatabase.setTransactionSuccessful();
+            Log.d(TAG, "Berhasil Menambah");
         } catch (SQLException e){
             e.printStackTrace();
             Log.d(TAG, "Gagal Untuk Menambah"+e);
@@ -80,6 +84,7 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
+    //mendapatkan menu yang ada didatabase
     public List<Menu> getMenu(){
         List<Menu> jadwalList = new ArrayList<>();
         String JADWAL_QUERY = " SELECT * FROM "+ TABLE_INPUT;
@@ -111,6 +116,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return jadwalList;
     }
 
+    //menghapus baris di database
     public void deleteJadwal(String id){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
@@ -127,6 +133,7 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
+    //update data pada database
     public void updateData(Menu menu){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
